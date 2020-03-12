@@ -2,10 +2,7 @@ package com.company.project.configurer;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -67,6 +64,7 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
     @Override
     public void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> exceptionResolvers) {
         exceptionResolvers.add(new HandlerExceptionResolver() {
+            @Override
             public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception e) {
                 Result result = new Result();
                 if (e instanceof ServiceException) {//业务失败的异常，如“账号或密码错误”
@@ -127,17 +125,9 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
                     }
                 }
             });
-        }
+        };
 
-        registry.addInterceptor(new HandlerInterceptorAdapter() {
-            @Override
-            public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-                logger.info("收到请求，请求接口：{}，请求IP：{}，请求参数：{}",
-                        request.getRequestURI(), getIpAddress(request), JSON.toJSONString(request.getParameterMap()));
 
-                return true;
-            }
-        });
     }
 
     private void responseResult(HttpServletResponse response, Result result) {

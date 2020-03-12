@@ -1,8 +1,7 @@
-package com.company.project.web;
+package com.company.project.controller;
 
 import com.company.project.core.Result;
 import com.company.project.core.ResultGenerator;
-import com.company.project.core.ServiceException;
 import com.company.project.model.TOrder;
 import com.company.project.service.TOrderService;
 import com.github.pagehelper.PageHelper;
@@ -25,10 +24,11 @@ public class TOrderController {
     private TOrderService tOrderService;
 
     @PostMapping("/add")
-    public Result add(TOrder tOrder) {
+    public Result add(TOrder tOrder) throws Exception {
         tOrderService.save(tOrder);
         if (tOrder.getId() % 2 == 0) {
-            throw new ServiceException("add fail");
+            throw new Exception();
+//            throw new ServiceException("add fail");
         }
         return ResultGenerator.genSuccessResult(tOrder);
     }
