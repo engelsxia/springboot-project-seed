@@ -1,5 +1,8 @@
 package com.company.project.model;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 import javax.persistence.*;
 
@@ -9,12 +12,18 @@ public class TOrder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")//页面写入数据库时格式化
+    @JSONField(format="yyyy-MM-dd hh:mm:ss")//数据库导出页面时json格式化
     @Column(name = "create_time")
     private Date createTime;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")//页面写入数据库时格式化
+    @JSONField(format="yyyy-MM-dd hh:mm:ss")//数据库导出页面时json格式化
     @Column(name = "update_time")
     private Date updateTime;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")//页面写入数据库时格式化
+    @JSONField(format="yyyy-MM-dd hh:mm:ss")//数据库导出页面时json格式化
     @Column(name = "delete_time")
     private Date deleteTime;
 

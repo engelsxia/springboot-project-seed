@@ -19,4 +19,9 @@ public class TOrderServiceImpl extends AbstractService<TOrder> implements TOrder
     @Resource
     private TOrderMapper tOrderMapper;
 
+    @Override
+    public TOrder findById(Long id) {
+        return tOrderMapper.selectByPrimaryKey(id);
+    }
+
 }

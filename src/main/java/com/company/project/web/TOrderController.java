@@ -46,7 +46,7 @@ public class TOrderController {
     }
 
     @PostMapping("/detail")
-    public Result detail(@RequestParam Integer id) {
+    public Result detail(@RequestParam("id") Long id) {
         TOrder tOrder = tOrderService.findById(id);
         return ResultGenerator.genSuccessResult(tOrder);
     }

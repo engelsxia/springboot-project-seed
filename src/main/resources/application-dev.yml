@@ -1,0 +1,13 @@
+# 开发环境配置
+# 数据源配置，请修改为你项目的实际配置
+server:
+    port: 10002
+spring:
+
+    servlet:
+        context-path:
+    datasource:
+        driver-class-name: com.mysql.jdbc.Driver
+        password: xia!312342
+        url: jdbc:mysql://localhost:3306/study?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
+        username: xialin
